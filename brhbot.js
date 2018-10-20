@@ -52,7 +52,7 @@ const command = args.shift().toLowerCase();
     index = Math.floor(Math.random() * fortune.fortunes.length)
     selected = fortune.fortunes[index]
     if (selected.endsWith(".jpg")){
-      
+      Client.sendFile(channel, attachment, name, content) 
     }
     message.channel.send(selected)
   }
@@ -102,6 +102,16 @@ const command = args.shift().toLowerCase();
 	selected = eightball[index]
 	message.channel.send(selected)
   }
+  if (command === "reset"){
+    resetBot(message.channel)
+  }
 });
+
+function resetBot(channel) {
+  // send channel a message that you're resetting bot [optional]
+  channel.send('Resetting...')
+  .then(msg => client.destroy())
+  .then(() => client.login(config.token));
+}
 
 client.login(config.token);
