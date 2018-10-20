@@ -19,11 +19,34 @@ const command = args.shift().toLowerCase();
     message.channel.send("Hello World");
   }
   if (command === "fortune") {
-    let request = args[0]
     message.react('🤔')
     index = Math.floor(Math.random() * fortune.fortunes.length)
     selected = fortune.fortunes[index]
     message.channel.send('Your fortune is: ' +  selected)
+  }
+  if (command === "lottery") {
+    //Generate 5 random number from 01 to 59, no 0's.
+    //Put those number in order
+    //Return those numbers, in a string
+    lot = []
+    lotstr = ""
+    for(i=0;i<5;i++){
+      draw = Math.floor((Math.random() * 59) + 1)
+      while (lot.includes(draw)){
+        draw = Math.floor((Math.random() * 59) + 1)
+      }
+      lot.push(draw)
+    }
+    console.log(lot)
+    lot.sort(function(a, b){return a - b});
+    console.log(lot)
+    for(i=0;i<5;i++){
+      lotstr += lot[i] + " "
+    }
+    message.channel.send("Your Lottery Numbers\n" + lotstr)
+  }
+  if (command === "break"){
+    channel.send(randomsauce)
   }
 });
 
