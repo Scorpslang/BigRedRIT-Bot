@@ -1,11 +1,13 @@
-const Discord = require("discord.js");
-const client = new Discord.Client();
+const {Client, RichEmbed} = require("discord.js");
+//const Discord  = require("discord.js")
+//const client = new Discord.Client();
+const client = new Client();
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
  
 client.on("ready", () => {
   console.log("I am ready!");
-  client.channels.get('503044022781083648').send("And I'm back");
+  //client.channels.get('503044022781083648').send("And I'm back");
 });
 prefix = config.prefix 
 client.on("message", (message) => {
@@ -28,8 +30,6 @@ const command = args.shift().toLowerCase();
     //Generate 5 random number from 01 to 59, no 0's.
     //Put those number in order
     //Return those numbers, in a string
-    const embed = new RichEmbed()
-    .setTitle('A slick little embed')
     lot = []
     lotstr = ""
     for(i=0;i<5;i++){
@@ -43,13 +43,20 @@ const command = args.shift().toLowerCase();
     lot.sort(function(a, b){return a - b});
     console.log(lot)
     power = Math.floor((Math.random() * 26) + 1)
+    if (power < 10){
+      power = ("0" + power)
+    }
     for(i=0;i<5;i++){
       if (lot[i] < 10){
         lot[i] = ("0" + lot[i])
       }
       lotstr += lot[i] + " "
     }
-    message.channel.send("Your Lottery Numbers\n" + lotstr)
+    const embed = new RichEmbed()
+    .setTitle("Your Lottery Numbers")
+    .setDescription(lotstr + ":red_circle:" + power)
+    .setColor('RED')
+    message.channel.send(embed);
   }
   if (command === "break"){
     channel.send(randomsauce)
