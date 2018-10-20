@@ -9,16 +9,16 @@ client.on("ready", () => {
  
 client.on("message", (message) => {
 if (!message.content.startsWith(config.prefix) || message.author.bot) return;
-  if (message.content.startsWith(config.prefix + "ping")) {
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  if (command === "ping") {
     message.channel.send("pong!");
   }
-  if (message.content.startsWith(config.prefix + "greet")) {
+  if (command === "greet") {
     message.channel.send("Hello World");
   }
-  if (message.content.startsWith(config.prefix + "fortune")) {
+  if (command === "fortune") {
     message.react('🤔')
-    .then(console.log)
-    .catch(console.error);
+    message.reply('Your fortune is:')
   }
 });
 
