@@ -6,10 +6,11 @@ client.on("ready", () => {
   console.log("I am ready!");
   client.channels.get('503044022781083648').send("And I'm back");
 });
- 
+prefix = config.prefix 
 client.on("message", (message) => {
-if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+if (!message.content.startsWith(prefix) || message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
   if (command === "ping") {
     message.channel.send("pong!");
   }
