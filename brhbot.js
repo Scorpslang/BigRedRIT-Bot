@@ -19,11 +19,11 @@ client.on("message", (message) => {
 if (!message.content.startsWith(prefix) || message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
-help(command);
+help(command,message);
 });
 
 /* help fuction */
-function help(command) {
+function help(command, message) {
   if(command === "help") {
     message.channel.send({
       embed: {
@@ -85,8 +85,12 @@ function help(command) {
   if (command === "flip"){
     flipCoin(message)
   }
-  if (command == "dice"){
+  if (command === "dice"){
     rollDice(message)
+  }
+  if (command === "timetill"){
+  //timetill mode year date month hour minutes seconds milliseconds
+	timetill(message, args)
   }
   if (command === "reset"){
     resetBot(message.channel)
@@ -97,7 +101,7 @@ function help(command) {
   if (command === "break"){
     soup
   }
-});
+};
 
 /* Roll a die */
 function rollDice(message) {
@@ -132,7 +136,7 @@ function quick_maths(message){
   let ans = firstnum + secondnum;
   client.on("message", (message) => {
     if (message == ans){
-      userId = message.author.username
+      userId = message.author.id
     }
   }),
   message.channel.send('What is '+ firstnum + "+" + secondnum + "?")
@@ -143,7 +147,7 @@ function quick_maths(message){
     errors: ['time'],
   })
   .then((collected) => {
-      message.channel.send(`The correct answer was: ${collected.first().content}. Congrats @${userId}.`);
+      message.channel.send(`The correct answer was: ${collected.first().content}. Congrats <@${userId}>.`);
     })
     .catch(() => {
       message.channel.send(`Time limit expired. The correct answer was ${collected.first().content}`);
@@ -203,6 +207,50 @@ function setprefix(message, args) {
       message.channel.send("Invalid Prefix");
     }
   }
+
+/*Time until ... */
+function timetill(message, args){
+  var timeNow = new Date
+  let mode = args[0]
+  yearNow = timeNowgetFullYear()
+  monthNow = timeNowgetMonth() + 1
+  dateNow = timeNow.getDate()
+  hourNow = timeNow.getHours()
+  minuteNow = timeNow.getMinutes()
+  secondNow = timeNow.getSeconds()
+  switch (mode){
+    case "year":
+	  if (args[0] > yearNow){
+		if (Math.abs(args[0] - yearNow) > 1){
+	      message.channel.send(Math.abs(args[0] - yearNow) + " years until " + yearNow)
+	    }
+		else {
+		  message.channel.send(Math.abs(args[0] - yearNow) + " year until " + yearNow)
+		}
+	  }
+	  else {
+		if (Math.abs(args[0] - yearNow) > 1){
+		  message.channel.send(Math.abs(args[0] - yearNow) + " years from " + yearNow)
+		}
+		else {
+		  message.channel.send(Math.abs(args[0] - yearNow) + " year from " + yearNow)
+		}
+	  }
+      break;
+    case "month":
+      break;
+	case "day":
+	  break;
+	case "hour":
+	  break;
+	case "minute":
+	  break;
+	case "second":
+	  break;
+	case "millisecond":
+	  break
+  }
+	}
 
 /* Terminating bot */
 function stopBot(channel){
