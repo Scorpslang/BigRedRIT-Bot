@@ -1,6 +1,4 @@
 const {Client, RichEmbed} = require("discord.js");
-//const Discord  = require("discord.js")
-//const client = new Discord.Client();
 const client = new Client();
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
@@ -68,19 +66,15 @@ const command = args.shift().toLowerCase();
     setprefix(message, args)
   }
   if (command === "8ball"){
-    eight(message)
+    eight(message, args)
   }
   if (command === "flip"){
-<<<<<<< HEAD
 	  flip = Math.floor(Math.random() * 2)
 	  if (flip == 0){
       message.channel.send("Heads!")
 	  } else{
 	  message.channel.send("Tails!")
   }
-=======
-    flipCoin(message)
->>>>>>> 82ff1e3db48792c9608be772ed42c94ef5129652
   }
   if (command == "dice"){
     rollDice(message)
@@ -168,17 +162,16 @@ function lottery(message){
     message.channel.send(embed);
 }
 /* 8ball fortune */
-function eight(message){
-  let ques = args[0];
-  if (ques.strim() === ""){
-	index = Math.floor(Math.random() * eightballerr.eightballerror.length)
-	selected = eightballerr.eightballerror[index]
-	message.channel.send(selected)
+function eight(message, args){
+  if (args[0] == undefined){
+	  index = Math.floor(Math.random() * eightballerr.eightballerror.length)
+	  selected = eightballerr.eightballerror[index]
+	  message.channel.send(selected)
   }
   else{
     index = Math.floor(Math.random() * eightball.eightball.length)
-	selected = eightball.eightball[index]
-	message.channel.send(selected)
+	  selected = eightball.eightball[index]
+	  message.channel.send(selected)
   }
 }
 /* Set prefix */
