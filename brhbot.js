@@ -144,7 +144,7 @@ function quick_maths(message){
     errors: ['time'],
   })
   .then((collected) => {
-      message.channel.send(`The correct answer was: ${collected.first().content}. Congrats <@${userId}>.`);
+      message.channel.send(`The correct answer was **${collected.first().content}**. Congrats <@${userId}>.`);
     })
     .catch(() => {
       message.channel.send(`Time limit expired. The correct answer was ${ans}.`);
