@@ -6,7 +6,6 @@ const config = require("./config.json");
 const fortune = require ("./fortunes.json")
 
 client.on("error", (e) => console.error(e));
-client.on("warn", (e) => console.warn(e));
 client.on("debug", (e) => console.info(e));
 
 client.on("ready", () => {
@@ -15,6 +14,7 @@ client.on("ready", () => {
   //client.channels.get('503044022781083648').send("And I'm back");
 });
 prefix = config.prefix 
+
 client.on("message", (message) => {
 if (!message.content.startsWith(prefix) || message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -50,7 +50,7 @@ const command = args.shift().toLowerCase();
     message.react('🤔')
     index = Math.floor(Math.random() * fortune.fortunes.length)
     selected = fortune.fortunes[index]
-    message.channel.send('Your fortune is: ' +  selected)
+    message.channel.send(selected)
   }
   if (command === "lottery") {
     //Generate 5 random numbers from 01 to 69, no 0's.
