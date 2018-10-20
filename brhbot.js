@@ -33,7 +33,7 @@ const command = args.shift().toLowerCase();
 		{
 		  name: prefix + "lottery",
 		  value: prefix + "lottery"
-		}
+		},
 		{
 		  name: prefix + "8ball",
 		  value: prefix + "8ball"
@@ -42,7 +42,6 @@ const command = args.shift().toLowerCase();
 	  }
 	})
   }
-		
   if (command === "ping") {
     message.channel.send("pong!");
   }
@@ -108,15 +107,16 @@ const command = args.shift().toLowerCase();
 	flip = Math.floor(Math.random() * 2)
 	if (flip == 0){
 	  message.channel.send("Heads!")
+	}
 	else{
 	  message.channel.send("Tails!")
 	}
   }
   if (command == "dice"){
 	message.channel.send(Math.floor(Math.random() * 6) + 1)
+  }
   if (command === "reset"){
     resetBot(message.channel)
->>>>>>> 5af88fa73baf356ece5418b00a42d7ad7f4bde3b
   }
 });
 
