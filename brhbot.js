@@ -107,7 +107,6 @@ function fortuneread(message){
       message.channel.send(selected)
     }
 }
-<<<<<<< HEAD
 
 function quick_maths(message){
   message.channel.send('')
@@ -125,9 +124,7 @@ function quick_maths(message){
     });
 });
 }
-=======
 /* Powerball lottery */
->>>>>>> 1e50cd763a2df793d7a9c8d0a623e4e3fca1048f
 function lottery(message){
     lot = []
     lotstr = ""
