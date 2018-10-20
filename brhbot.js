@@ -4,7 +4,11 @@ const {Client, RichEmbed} = require("discord.js");
 const client = new Client({autoReconnect:true});
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
- 
+
+client.on("error", (e) => console.error(e));
+client.on("warn", (e) => console.warn(e));
+client.on("debug", (e) => console.info(e));
+
 client.on("ready", () => {
   console.log("I am ready!");
   client.user.setActivity("Type !help");
@@ -88,6 +92,7 @@ const command = args.shift().toLowerCase();
       message.channel.send("Invalid Prefix");
     }
   }
+}
 });
 
 client.login(config.token);
