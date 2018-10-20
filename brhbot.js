@@ -62,6 +62,9 @@ const command = args.shift().toLowerCase();
   if (command === "lottery") {
     lottery(message)
   }
+  if (command === "quikmafs") {
+    quick_maths(message)
+  }
   if (command === "prefix"){
     setprefix(message, args)
   }
@@ -118,15 +121,16 @@ function fortuneread(message){
 function quick_maths(message){
   let firstnum = Math.ceil(Math.random() * 100)
   let secondnum = Math.ceil(Math.random() * 100)
+  let ans = firstnum + secondnum
   message.channel.send('What is '+ firstnum + "+" + secondnum + "?")
   .then(() => {
-    message.channel.awaitMessages(response => response.content === 'test', {
+    message.channel.awaitMessages(response => response.content === ("" + ans), {
     max: 1,
-    time: 30000,
+    time: 10000,
     errors: ['time'],
   })
   .then((collected) => {
-      message.channel.send(`The collected message was: ${collected.first().content}`);
+      message.channel.send(`The correct answer was: ${collected.first().content}`);
     })
     .catch(() => {
       message.channel.send('There was no collected message that passed the filter within the time limit!');
