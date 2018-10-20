@@ -6,8 +6,6 @@ const config = require("./config.json");
 const fortune = require ("./fortunes.json")
 const eightball = require ("./8ball.json")
 
-client.on("error", (e) => console.error(e));
-client.on("debug", (e) => console.info(e));
 
 client.on("ready", () => {
   console.log("I am ready!");
