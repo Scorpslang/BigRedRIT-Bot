@@ -7,6 +7,7 @@ const fortune = require ("./fortunes.json")
  
 client.on("ready", () => {
   console.log("I am ready!");
+  client.user.setActivity("Type !help");
   //client.channels.get('503044022781083648').send("And I'm back");
 });
 prefix = config.prefix 
@@ -62,7 +63,8 @@ const command = args.shift().toLowerCase();
     let new_prefix = args[0];
     if (new_prefix != undefined && new_prefix.length < 3){
       prefix = new_prefix;
-      message.channel.send("Prefix Changed to " + new_prefix);
+      message.channel.send("Prefix Changed to " + prefix);
+      client.user.setGame("Type "+ prefix + "help");
     }
     else{
       message.channel.send("Invalid Prefix");
