@@ -67,11 +67,30 @@ const command = args.shift().toLowerCase();
   if (command === "prefix"){
     setprefix(message, args)
   }
-    
   if (command === "8ball"){
     eight(message)
   }
   if (command === "flip"){
+    flipCoin(message)
+  }
+  if (command == "dice"){
+    rollDice(message)
+  }
+  if (command === "reset"){
+    resetBot(message.channel)
+  }
+  if (command === "stop"){
+    stopBot(message.channel)
+  }
+});
+
+/* Roll a die */
+function rollDice(message) {
+	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
+}
+
+/* Flip a coin */
+function flipCoin(message) {
 	flip = Math.floor(Math.random() * 2)
 	if (flip == 0){
 	  message.channel.send("Heads!")
@@ -79,21 +98,6 @@ const command = args.shift().toLowerCase();
 	else{
 	  message.channel.send("Tails!")
   }
-  }
-  if (command == "dice"){
-	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
-  }
-  if (command === "reset"){
-    resetBot(message.channel)
-  }
-  if (command === "stop"){
-    stopBot()
-  }
-});
-/* Terminating bot */
-function stopBot(){
-  channel.send("Terminating current bot")
-   .then(() => client.destroy())
 }
 /* Get a fortune */
 function fortuneread(message){
@@ -161,6 +165,12 @@ function setprefix(message, args) {
       message.channel.send("Invalid Prefix");
     }
   }
+
+/* Terminating bot */
+function stopBot(channel){
+  channel.send("Terminating current bot")
+   .then(() => client.destroy())
+}
 
 /* Reset bot */
 function resetBot(channel) {
