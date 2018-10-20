@@ -5,7 +5,7 @@ const client = new Client({autoReconnect:true});
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
 const eightball = require ("./8ball.json")
-
+const eightballerr = require ("./8ballerr.json")
 
 client.on("ready", () => {
   console.log("I am ready!");
@@ -137,9 +137,17 @@ function lottery(message){
 }
 /* 8ball fortune */
 function eight(message){
-  index = Math.floor(Math.random() * eightball.eightball.length)
+  let ques = args[0];
+  if (ques.strim() === ""){
+	index = Math.floor(Math.random() * eightballerr.eightballerror.length)
+	selected = eightballerr.eightballerror[index]
+	message.channel.send(selected)
+  }
+  else{
+    index = Math.floor(Math.random() * eightball.eightball.length)
 	selected = eightball.eightball[index]
 	message.channel.send(selected)
+  }
 }
 /* Set prefix */
 function setprefix(message, args) {
