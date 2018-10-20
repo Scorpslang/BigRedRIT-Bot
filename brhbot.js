@@ -15,6 +15,24 @@ client.on("message", (message) => {
 if (!message.content.startsWith(prefix) || message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
+  if(command === "help") {
+	message.channel.send({embed: {
+	  title: "Bot Commands",
+	  description: "Type " + prefix + "help (command) to find out more info about the command",
+	  fields: [{
+	      value: prefix + "ping"
+		},
+		{
+		  value: prefix + "fortune"
+		},
+		{
+		  value: prefix + "lottery"
+		}
+	  ]
+	  }
+	})
+	
+		
   if (command === "ping") {
     message.channel.send("pong!");
   }
