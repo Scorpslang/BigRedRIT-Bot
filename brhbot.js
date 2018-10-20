@@ -98,9 +98,6 @@ function help(command, message, args) {
   if (command === "stop"){
     stopBot(message.channel)
   }
-  if (command === "break"){
-    soup
-  }
 };
 
 /* Roll a die */
