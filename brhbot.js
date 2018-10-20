@@ -51,6 +51,9 @@ const command = args.shift().toLowerCase();
     message.react('🤔')
     index = Math.floor(Math.random() * fortune.fortunes.length)
     selected = fortune.fortunes[index]
+    if (selected.endsWith(".jpg")){
+      
+    }
     message.channel.send(selected)
   }
   if (command === "lottery") {
