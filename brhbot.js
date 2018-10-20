@@ -1,7 +1,7 @@
 const {Client, RichEmbed} = require("discord.js");
 //const Discord  = require("discord.js")
 //const client = new Discord.Client();
-const client = new Client({});
+const client = new Client();
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
 const eightball = require ("./8ball.json")
@@ -72,11 +72,10 @@ const command = args.shift().toLowerCase();
     eight(message)
   }
   if (command === "flip"){
-	flip = Math.floor(Math.random() * 2)
-	if (flip == 0){
-	  message.channel.send("Heads!")
-	}
-	else{
+	  flip = Math.floor(Math.random() * 2)
+	  if (flip == 0){
+      message.channel.send("Heads!")
+	  } else{
 	  message.channel.send("Tails!")
   }
   }
@@ -109,7 +108,9 @@ function fortuneread(message){
 }
 
 function quick_maths(message){
-  message.channel.send('')
+  let firstnum = Math.ceil(Math.random() * 100)
+  let secondnum = Math.ceil(Math.random() * 100)
+  message.channel.send('What is '+ firstnum + "+" + secondnum + "?")
   .then(() => {
     message.channel.awaitMessages(response => response.content === 'test', {
     max: 1,
