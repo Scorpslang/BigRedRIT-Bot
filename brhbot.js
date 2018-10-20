@@ -18,20 +18,23 @@ const command = args.shift().toLowerCase();
   if(command === "help") {
 	message.channel.send({embed: {
 	  title: "Bot Commands",
-	  description: "Type " + prefix + "help (command) to find out more info about the command",
+	  description: "To see a page, just add the page number after the " + prefix + "help command",
 	  fields: [{
+		  name: prefix + "ping",
 	      value: prefix + "ping"
 		},
 		{
+		  name: prefix + "fortune",
 		  value: prefix + "fortune"
 		},
 		{
+		  name: prefix + "lottery",
 		  value: prefix + "lottery"
 		}
 	  ]
 	  }
 	})
-	
+  }
 		
   if (command === "ping") {
     message.channel.send("pong!");
