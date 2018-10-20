@@ -115,7 +115,7 @@ const command = args.shift().toLowerCase();
   }
 });
 function stopBot(){
-  client.destroy()
+  () => client.destroy()
 }
 function setprefix(message, args) {
   let new_prefix = args[0];
@@ -131,7 +131,7 @@ function setprefix(message, args) {
 function resetBot(channel) {
   // send channel a message that you're resetting bot [optional]
   channel.send('Resetting...')
-   .then(msg => client.destroy())
+   .then(() => client.destroy())
    .then(() => client.login(config.token));
 }
 
