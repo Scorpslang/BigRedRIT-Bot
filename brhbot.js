@@ -52,9 +52,11 @@ const command = args.shift().toLowerCase();
     index = Math.floor(Math.random() * fortune.fortunes.length)
     selected = fortune.fortunes[index]
     if (selected.endsWith(".jpg")){
-      Client.sendFile(channel, attachment, name, content) 
+      image = "./images/" + selected;
+      message.channel.send({files: [image]})
+    }else{
+      message.channel.send(selected)
     }
-    message.channel.send(selected)
   }
   if (command === "lottery") {
     //Generate 5 random numbers from 01 to 69, no 0's.
