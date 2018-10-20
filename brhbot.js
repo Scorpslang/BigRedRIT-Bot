@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
+const fortune = require ("./fortunes.json")
  
 client.on("ready", () => {
   console.log("I am ready!");
@@ -18,9 +19,11 @@ const command = args.shift().toLowerCase();
     message.channel.send("Hello World");
   }
   if (command === "fortune") {
-    let request = args[1]
+    let request = args[0]
     message.react('🤔')
-    message.reply('Your fortune is: ' + request)
+    index = Math.floor(Math.random() * fortune.fortunes.length)
+    selected = fortune.fortunes[index]
+    message.channel.send('Your fortune is: ' +  selected)
   }
 });
 
