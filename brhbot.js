@@ -19,6 +19,11 @@ client.on("message", (message) => {
 if (!message.content.startsWith(prefix) || message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
+help(command);
+});
+
+/* help fuction */
+function help(command) {
   if(command === "help") {
     message.channel.send({
       embed: {
