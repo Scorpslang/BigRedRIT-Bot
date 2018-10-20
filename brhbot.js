@@ -37,7 +37,6 @@ const command = args.shift().toLowerCase();
 		{
 		  name: prefix + "8ball",
 		  value: prefix + "8ball"
-<<<<<<< HEAD
     }]
   }})
 }
@@ -96,6 +95,18 @@ const command = args.shift().toLowerCase();
 	selected = eightball.eightball[index]
 	message.channel.send(selected)
   }
+  if (command === "flip"){
+	flip = Math.floor(Math.random() * 2)
+	if (flip == 0){
+	  message.channel.send("Heads!")
+	}
+	else{
+	  message.channel.send("Tails!")
+	}
+  }
+  if (command == "dice"){
+	message.channel.send(Math.floor(Math.random() * 6) + 1)
+  }
   if (command === "reset"){
     resetBot(message.channel)
   }
@@ -115,8 +126,8 @@ function setprefix(message, args) {
 function resetBot(channel) {
   // send channel a message that you're resetting bot [optional]
   channel.send('Resetting...')
-  .then(msg => client.destroy())
-  .then(() => client.login(config.token));
+   .then(msg => client.destroy())
+   .then(() => client.login(config.token));
 }
 
 client.login(config.token);
