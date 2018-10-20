@@ -103,7 +103,6 @@ const command = args.shift().toLowerCase();
 	selected = eightball.eightball[index]
 	message.channel.send(selected)
   }
-<<<<<<< HEAD
   if (command === "flip"){
 	flip = Math.floor(Math.random() * 2)
 	if (flip == 0){
@@ -114,7 +113,6 @@ const command = args.shift().toLowerCase();
   }
   if (command == "dice"){
 	message.channel.send(Math.floor(Math.random() * 6) + 1)
-=======
   if (command === "reset"){
     resetBot(message.channel)
 >>>>>>> 5af88fa73baf356ece5418b00a42d7ad7f4bde3b
