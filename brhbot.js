@@ -147,7 +147,7 @@ function quick_maths(message){
       message.channel.send(`The correct answer was **${collected.first().content}**. Congrats <@${userId}>.`);
     })
     .catch(() => {
-      message.channel.send(`Time limit expired. The correct answer was ${ans}.`);
+      message.channel.send(`Time limit expired. The correct answer was **${ans}**.`);
     });
 })
 }
