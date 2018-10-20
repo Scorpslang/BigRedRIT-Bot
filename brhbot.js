@@ -70,7 +70,7 @@ const command = args.shift().toLowerCase();
 	}
 	else{
 	  message.channel.send("Tails!")
-	}
+  }
   }
   if (command == "dice"){
 	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
