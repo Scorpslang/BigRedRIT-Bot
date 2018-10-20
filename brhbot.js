@@ -15,6 +15,11 @@ if (!message.content.startsWith(config.prefix) || message.author.bot) return;
   if (message.content.startsWith(config.prefix + "greet")) {
     message.channel.send("Hello World");
   }
+  if (message.content.startsWith(config.prefix + "fortune")) {
+    message.react('🤔')
+    .then(console.log)
+    .catch(console.error);
+  }
 });
 
 client.login(config.token);
