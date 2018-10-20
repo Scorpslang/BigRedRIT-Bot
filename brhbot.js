@@ -105,7 +105,7 @@ const command = args.shift().toLowerCase();
 	}
   }
   if (command == "dice"){
-	message.channel.send(Math.floor(Math.random() * 6) + 1)
+	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
   }
   if (command === "reset"){
     resetBot(message.channel)
