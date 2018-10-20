@@ -95,7 +95,6 @@ const command = args.shift().toLowerCase();
       message.channel.send("Invalid Prefix");
     }
   }
-}
 });
 
 client.login(config.token);
