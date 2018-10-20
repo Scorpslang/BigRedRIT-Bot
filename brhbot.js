@@ -105,6 +105,17 @@ const command = args.shift().toLowerCase();
 	selected = eightball.eightball[index]
 	message.channel.send(selected)
   }
+  if (command === "flip"){
+	flip = Math.floor(Math.random() * 2)
+	if (flip == 0){
+	  message.channel.send("Heads!")
+	else{
+	  message.channel.send("Tails!")
+	}
+  }
+  if (command == "dice"){
+	message.channel.send(Math.floor(Math.random() * 6) + 1)
+  }
 });
 
 client.login(config.token);
