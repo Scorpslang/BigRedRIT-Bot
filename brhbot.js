@@ -48,7 +48,42 @@ const command = args.shift().toLowerCase();
     message.channel.send("Hello World");
   }
   if (command === "fortune") {
-    message.react('🤔')
+    fortuneread(message)
+  }
+  if (command === "lottery") {
+    lottery(message)
+  }
+  if (command === "prefix"){
+    setprefix(message, args)
+  }
+    
+  if (command === "8ball"){
+    eight(message)
+  }
+  if (command === "flip"){
+	flip = Math.floor(Math.random() * 2)
+	if (flip == 0){
+	  message.channel.send("Heads!")
+	}
+	else{
+	  message.channel.send("Tails!")
+	}
+  }
+  if (command == "dice"){
+	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
+  }
+  if (command === "reset"){
+    resetBot(message.channel)
+  }
+  if (command === "stop"){
+    stopBot()
+  }
+});
+function stopBot(){
+  () => client.destroy()
+}
+function fortuneread(message){
+  message.react('🤔')
     index = Math.floor(Math.random() * fortune.fortunes.length)
     selected = fortune.fortunes[index]
     if (selected.endsWith(".jpg")){
@@ -57,11 +92,8 @@ const command = args.shift().toLowerCase();
     }else{
       message.channel.send(selected)
     }
-  }
-  if (command === "lottery") {
-    //Generate 5 random numbers from 01 to 69, no 0's.
-    //Put those number in order
-    //Return those numbers, in a string
+}
+function lottery(message){
     lot = []
     lotstr = ""
     for(i=0;i<5;i++){
@@ -87,37 +119,11 @@ const command = args.shift().toLowerCase();
     .setDescription(lotstr + ":red_circle:" + power)
     .setColor('GREEN')
     message.channel.send(embed);
-  }
-  if (command === "prefix"){
-    setprefix(message, args)
-  }
-    
-  if (command === "8ball"){
-	index = Math.floor(Math.random() * eightball.eightball.length)
+}
+function eight(message){
+  index = Math.floor(Math.random() * eightball.eightball.length)
 	selected = eightball.eightball[index]
 	message.channel.send(selected)
-  }
-  if (command === "flip"){
-	flip = Math.floor(Math.random() * 2)
-	if (flip == 0){
-	  message.channel.send("Heads!")
-	}
-	else{
-	  message.channel.send("Tails!")
-	}
-  }
-  if (command == "dice"){
-	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
-  }
-  if (command === "reset"){
-    resetBot(message.channel)
-  }
-  if (command === "stop"){
-    stopBot()
-  }
-});
-function stopBot(){
-  () => client.destroy()
 }
 function setprefix(message, args) {
   let new_prefix = args[0];

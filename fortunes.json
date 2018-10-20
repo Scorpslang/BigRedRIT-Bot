@@ -2,11 +2,12 @@
   "fortunes": [
     "Tomorrow is a sunny day, but you didn't come here to hear that did you?",
     "Another fortune?",
+    "Nothing remarkable will happen"
     "Tomorrow will be a bad day, regret getting a fortune now?",
     "The fortune you want doesn't exist",
     "Fortune cookies contain 99% carbs",
     "Error 404: Fortune not found",
-    "You shouldn't believe these fortune",
+    "You shouldn't believe these fortunes",
     "I don't know the future but here is a cookie",
     "Run!",
     "Ignore previous fortune",
@@ -16,10 +17,10 @@
     "Sorry, try again",
     "Who listens to life advice from a bot!?",
     "Your lucky numbers are 9,1,1",
-	"Try the 8 ball",
-	"Did you actually expect a real fortune?",
-	"Tomorrows forecast is cloudy with a chance of...nope just cloudy",
-	"Hoverboards in 20XX?",
-	"Who wrote these anyways?"
+    "wild_draw_4.jpg",
+    "Try the 8 ball",
+    "Did you actually expect a real fortune?",
+    "Tomorrows forecast is cloudy with a chance of...nope just cloudy",
+    "Who wrote these anyways?"   
   ]
 }
