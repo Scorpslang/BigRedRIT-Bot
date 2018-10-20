@@ -18,8 +18,9 @@ const command = args.shift().toLowerCase();
     message.channel.send("Hello World");
   }
   if (command === "fortune") {
+    let request = args[1]
     message.react('🤔')
-    message.reply('Your fortune is:')
+    message.reply('Your fortune is: ' + request)
   }
 });
 
