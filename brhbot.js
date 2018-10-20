@@ -4,7 +4,11 @@ const {Client, RichEmbed} = require("discord.js");
 const client = new Client({autoReconnect:true});
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
- 
+
+client.on("error", (e) => console.error(e));
+client.on("warn", (e) => console.warn(e));
+client.on("debug", (e) => console.info(e));
+
 client.on("ready", () => {
   console.log("I am ready!");
   client.user.setActivity("Type !help");
@@ -49,7 +53,7 @@ const command = args.shift().toLowerCase();
     message.channel.send('Your fortune is: ' +  selected)
   }
   if (command === "lottery") {
-    //Generate 5 random number from 01 to 59, no 0's.
+    //Generate 5 random numbers from 01 to 69, no 0's.
     //Put those number in order
     //Return those numbers, in a string
     lot = []
@@ -76,7 +80,7 @@ const command = args.shift().toLowerCase();
     }
     const embed = new RichEmbed()
     .setTitle("Your Lottery Numbers")
-    .setDescription(lotstr + ":green_circle:" + power)
+    .setDescription(lotstr + ":red_circle:" + power)
     .setColor('GREEN')
     message.channel.send(embed);
   }
@@ -91,6 +95,7 @@ const command = args.shift().toLowerCase();
       message.channel.send("Invalid Prefix");
     }
   }
+}
 });
 
 client.login(config.token);
