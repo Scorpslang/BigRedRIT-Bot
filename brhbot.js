@@ -5,6 +5,7 @@ const client = new Client();
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
 const eightball = require ("./8ball.json")
+const eightballerr = require ("./8ballerr.json")
 
 client.on("ready", () => {
   console.log("I am ready!");
