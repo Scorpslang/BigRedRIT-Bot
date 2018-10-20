@@ -20,24 +20,25 @@ if (!message.content.startsWith(prefix) || message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
   if(command === "help") {
-	message.channel.send({embed: {
-	  title: "Bot Commands",
-	  description: "To see a page, just add the page number after the " + prefix + "help command",
-	  fields: [{
-		  name: prefix + "ping",
-	    value: "Repond \"pong!\" correspondingly "
-		},
-		{
-		  name: prefix + "fortune",
-		  value: "Give a fortune!"
-		},
-		{
-		  name: prefix + "lottery",
-		  value: "Powerball lottery simulator"
-		},
-		{
-		  name: prefix + "8ball",
-		  value: "Give more fortunes!"
+    message.channel.send({
+      embed: {
+        title: "Bot Commands",
+        description: "To see a page, just add the page number after the " + prefix + "help command",
+        fields: [{
+          name: prefix + "ping",
+          value: "Repond \"pong!\" correspondingly "
+        },
+        {
+          name: prefix + "fortune",
+          value: "Give a fortune!"
+        },
+        {
+          name: prefix + "lottery",
+          value: "Powerball lottery simulator"
+        },
+        {
+          name: prefix + "8ball",
+          value: "Give more fortunes!"
         },
         {
           name: prefix + "flip",
@@ -46,10 +47,15 @@ const command = args.shift().toLowerCase();
         {
           name: prefix + "dice",
           value: "Roll a 6-face die "
+        },
+        {
+          name: prefix + "quikmafs",
+          value: "Generate a random math function"
         }]
-    }})
+      }
+    })
   }
-		
+  //Manage input
   if (command === "ping") {
     message.channel.send("pong!");
   }
@@ -72,12 +78,7 @@ const command = args.shift().toLowerCase();
     eight(message, args)
   }
   if (command === "flip"){
-	  flip = Math.floor(Math.random() * 2)
-	  if (flip == 0){
-      message.channel.send("Heads!")
-	  } else{
-	  message.channel.send("Tails!")
-  }
+    flipCoin(message)
   }
   if (command == "dice"){
     rollDice(message)
@@ -88,16 +89,19 @@ const command = args.shift().toLowerCase();
   if (command === "stop"){
     stopBot(message.channel)
   }
+<<<<<<< HEAD
   if (command === "break"){
     soup
   }
 });
 
+=======
+}
+>>>>>>> d810f868a3ab803d00db740073c4b4f5e79dbe78
 /* Roll a die */
 function rollDice(message) {
 	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
 }
-
 /* Flip a coin */
 function flipCoin(message) {
 	flip = Math.floor(Math.random() * 2)
@@ -120,7 +124,7 @@ function fortuneread(message){
       message.channel.send(selected)
     }
 }
-
+/* Generate a random addition fuction */
 function quick_maths(message){
   let firstnum = Math.ceil(Math.random() * 100);
   let secondnum = Math.ceil(Math.random() * 100);
