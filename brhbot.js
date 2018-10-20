@@ -33,14 +33,13 @@ const command = args.shift().toLowerCase();
 		{
 		  name: prefix + "lottery",
 		  value: prefix + "lottery"
-		}
+		},
 		{
 		  name: prefix + "8ball",
 		  value: prefix + "8ball"
-	  ]
-	  }
-	})
-  }
+    }]
+  }})
+}
 		
   if (command === "ping") {
     message.channel.send("pong!");
@@ -88,16 +87,9 @@ const command = args.shift().toLowerCase();
     message.channel.send(embed);
   }
   if (command === "prefix"){
-    let new_prefix = args[0];
-    if (new_prefix != undefined && new_prefix.length < 3){
-      prefix = new_prefix;
-      message.channel.send("Prefix Changed to " + prefix);
-      client.user.setGame("Type "+ prefix + "help");
-    }
-    else{
-      message.channel.send("Invalid Prefix");
-    }
+    setprefix(message, args)
   }
+    
   if (command === "8ball"){
 	index = Math.floor(Math.random() * eightball.eightball.length)
 	selected = eightball.eightball[index]
@@ -108,6 +100,17 @@ const command = args.shift().toLowerCase();
   }
 });
 
+function setprefix(message, args) {
+  let new_prefix = args[0];
+    if (new_prefix != undefined && new_prefix.length < 3){
+      prefix = new_prefix;
+      message.channel.send("Prefix Changed to " + prefix);
+      client.user.setActivity("Type "+ prefix + "help");
+    }
+    else{
+      message.channel.send("Invalid Prefix");
+    }
+  }
 function resetBot(channel) {
   // send channel a message that you're resetting bot [optional]
   channel.send('Resetting...')
