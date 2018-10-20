@@ -1,7 +1,7 @@
 const {Client, RichEmbed} = require("discord.js");
 //const Discord  = require("discord.js")
 //const client = new Discord.Client();
-const client = new Client();
+const client = new Client({autoReconnect:true});
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
  
