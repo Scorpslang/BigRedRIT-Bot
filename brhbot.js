@@ -79,8 +79,12 @@ const command = args.shift().toLowerCase();
 	  message.channel.send("Tails!")
   }
   }
-  if (command == "dice"){
+  if (command === "dice"){
     rollDice(message)
+  }
+  if (command === "timetill"){
+  //timetill mode year date month hour minutes seconds milliseconds
+	timetill(message, args)
   }
   if (command === "reset"){
     resetBot(message.channel)
@@ -190,6 +194,48 @@ function setprefix(message, args) {
       message.channel.send("Invalid Prefix");
     }
   }
+
+/*Time until ... */
+function timetill(message, args){
+  var timeNow = new Date
+  let mode = args[0]
+  yearNow = timeNowgetFullYear()
+  monthNow = timeNowgetMonth() + 1
+  dateNow = timeNow.getDate()
+  hourNow = timeNow.getHours()
+  minuteNow = timeNow.getMinutes()
+  secondNow = timeNow.getSeconds()
+  switch (mode){
+    case "year":
+	  if (args[0] > yearNow){
+		if (Math.abs(args[0] - yearNow) > 1){
+	      message.channel.send(Math.abs(args[0] - yearNow) + " years until " + yearNow)
+	    }
+		else {
+		  message.channel.send(Math.abs(args[0] - yearNow) + " year until " + yearNow)
+	  }
+	  else if {
+		if (Math.abs(args[0] - yearNow > 1){
+		  message.channel.send(Math.abs(args[0] - yearNow) + " years from " + yearNow)
+		}
+		else {
+		  message.channel.send(Math.abs(args[0] - yearNow) + " year from " + yearNow)
+	  }
+      break;
+    case "month":
+      break;
+	case "day":
+	  break;
+	case "hour":
+	  break;
+	case "minute":
+	  break;
+	case "second":
+	  break;
+	case "millisecond":
+	  break
+  }
+	}
 
 /* Terminating bot */
 function stopBot(channel){
