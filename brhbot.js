@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+var logger = require('winston');
+var auth = require('./auth.json');
  
 // Configure logger settings
 logger.remove(logger.transports.Console);
