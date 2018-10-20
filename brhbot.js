@@ -1,7 +1,7 @@
 const {Client, RichEmbed} = require("discord.js");
 //const Discord  = require("discord.js")
 //const client = new Discord.Client();
-const client = new Client({autoReconnect:true});
+const client = new Client({});
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
 const eightball = require ("./8ball.json")
@@ -95,6 +95,23 @@ function fortuneread(message){
     }else{
       message.channel.send(selected)
     }
+}
+
+function quick_maths(message){
+  message.channel.send('')
+  .then(() => {
+    message.channel.awaitMessages(response => response.content === 'test', {
+    max: 1,
+    time: 30000,
+    errors: ['time'],
+  })
+  .then((collected) => {
+      message.channel.send(`The collected message was: ${collected.first().content}`);
+    })
+    .catch(() => {
+      message.channel.send('There was no collected message that passed the filter within the time limit!');
+    });
+});
 }
 function lottery(message){
     lot = []
