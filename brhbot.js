@@ -88,6 +88,9 @@ const command = args.shift().toLowerCase();
   if (command === "stop"){
     stopBot(message.channel)
   }
+  if (command === "break"){
+    soup
+  }
 });
 
 /* Roll a die */
@@ -119,9 +122,14 @@ function fortuneread(message){
 }
 
 function quick_maths(message){
-  let firstnum = Math.ceil(Math.random() * 100)
-  let secondnum = Math.ceil(Math.random() * 100)
-  let ans = firstnum + secondnum
+  let firstnum = Math.ceil(Math.random() * 100);
+  let secondnum = Math.ceil(Math.random() * 100);
+  let ans = firstnum + secondnum;
+  client.on("message", (message) => {
+    if (message == ans){
+      userId = message.author.username
+    }
+  }),
   message.channel.send('What is '+ firstnum + "+" + secondnum + "?")
   .then(() => {
     message.channel.awaitMessages(response => response.content === ("" + ans), {
@@ -130,12 +138,12 @@ function quick_maths(message){
     errors: ['time'],
   })
   .then((collected) => {
-      message.channel.send(`The correct answer was: ${collected.first().content}`);
+      message.channel.send(`The correct answer was: ${collected.first().content}. Congrats @${userId}.`);
     })
     .catch(() => {
-      message.channel.send('There was no collected message that passed the filter within the time limit!');
+      message.channel.send(`Time limit expired. The correct answer was ${collected.first().content}`);
     });
-});
+})
 }
 /* Powerball lottery */
 function lottery(message){
