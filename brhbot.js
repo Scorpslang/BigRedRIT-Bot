@@ -6,7 +6,6 @@ const config = require("./config.json");
 const fortune = require ("./fortunes.json")
 const eightball = require ("./8ball.json")
 
-
 client.on("ready", () => {
   console.log("I am ready!");
   client.user.setActivity("Type !help");
@@ -40,17 +39,17 @@ const command = args.shift().toLowerCase();
 		{
 		  name: prefix + "8ball",
 		  value: "Give more fortunes!"
-    },
-    {
-      name: prefix + "flip",
-      value: "Flip a coin"
-    },
-    {
-      name: prefix + "dice",
-      value: "Roll a 6-face die "
-    }]
-  }})
-}
+        },
+        {
+          name: prefix + "flip",
+          value: "Flip a coin"
+        },
+        {
+          name: prefix + "dice",
+          value: "Roll a 6-face die "
+        }]
+    }})
+  }
 		
   if (command === "ping") {
     message.channel.send("pong!");
@@ -67,32 +66,46 @@ const command = args.shift().toLowerCase();
   if (command === "prefix"){
     setprefix(message, args)
   }
-    
   if (command === "8ball"){
     eight(message)
   }
   if (command === "flip"){
+<<<<<<< HEAD
 	  flip = Math.floor(Math.random() * 2)
 	  if (flip == 0){
       message.channel.send("Heads!")
 	  } else{
 	  message.channel.send("Tails!")
   }
+=======
+    flipCoin(message)
+>>>>>>> 82ff1e3db48792c9608be772ed42c94ef5129652
   }
   if (command == "dice"){
-	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
+    rollDice(message)
   }
   if (command === "reset"){
     resetBot(message.channel)
   }
   if (command === "stop"){
-    stopBot()
+    stopBot(message.channel)
   }
 });
-/* Terminating bot */
-function stopBot(){
-  channel.send("Terminating current bot")
-   .then(() => client.destroy())
+
+/* Roll a die */
+function rollDice(message) {
+	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
+}
+
+/* Flip a coin */
+function flipCoin(message) {
+	flip = Math.floor(Math.random() * 2)
+	if (flip == 0){
+	  message.channel.send("Heads!")
+	}
+	else{
+	  message.channel.send("Tails!")
+  }
 }
 /* Get a fortune */
 function fortuneread(message){
@@ -155,9 +168,17 @@ function lottery(message){
 }
 /* 8ball fortune */
 function eight(message){
-  index = Math.floor(Math.random() * eightball.eightball.length)
+  let ques = args[0];
+  if (ques.strim() === ""){
+	index = Math.floor(Math.random() * eightballerr.eightballerror.length)
+	selected = eightballerr.eightballerror[index]
+	message.channel.send(selected)
+  }
+  else{
+    index = Math.floor(Math.random() * eightball.eightball.length)
 	selected = eightball.eightball[index]
 	message.channel.send(selected)
+  }
 }
 /* Set prefix */
 function setprefix(message, args) {
@@ -171,6 +192,12 @@ function setprefix(message, args) {
       message.channel.send("Invalid Prefix");
     }
   }
+
+/* Terminating bot */
+function stopBot(channel){
+  channel.send("Terminating current bot")
+   .then(() => client.destroy())
+}
 
 /* Reset bot */
 function resetBot(channel) {
