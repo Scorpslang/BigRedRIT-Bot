@@ -34,6 +34,9 @@ const command = args.shift().toLowerCase();
 		  name: prefix + "lottery",
 		  value: prefix + "lottery"
 		}
+		{
+		  name: prefix + "8ball",
+		  value: prefix + "8ball"
 	  ]
 	  }
 	})
@@ -97,7 +100,7 @@ const command = args.shift().toLowerCase();
   }
   if (command === "8ball"){
 	index = Math.floor(Math.random() * eightball.eightball.length)
-	selected = eightball[index]
+	selected = eightball.eightball[index]
 	message.channel.send(selected)
   }
   if (command === "reset"){
