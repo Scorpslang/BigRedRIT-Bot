@@ -110,8 +110,13 @@ const command = args.shift().toLowerCase();
   if (command === "reset"){
     resetBot(message.channel)
   }
+  if (command === "stop"){
+    stopBot()
+  }
 });
-
+function stopBot(){
+  client.destroy()
+}
 function setprefix(message, args) {
   let new_prefix = args[0];
     if (new_prefix != undefined && new_prefix.length < 3){
