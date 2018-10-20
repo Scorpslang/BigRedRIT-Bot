@@ -54,8 +54,8 @@ const command = args.shift().toLowerCase();
     }
     const embed = new RichEmbed()
     .setTitle("Your Lottery Numbers")
-    .setDescription(lotstr + ":red_circle:" + power)
-    .setColor('RED')
+    .setDescription(lotstr + ":green_circle:" + power)
+    .setColor('GREEN')
     message.channel.send(embed);
   }
   if (command === "break"){
