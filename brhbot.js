@@ -5,7 +5,6 @@ var auth = require('./auth.json');
 // Initialize Discord Bot
 var bot = new Discord.Client({
    token: auth.token,
-   autorun: true
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
