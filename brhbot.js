@@ -27,19 +27,27 @@ const command = args.shift().toLowerCase();
 	  description: "To see a page, just add the page number after the " + prefix + "help command",
 	  fields: [{
 		  name: prefix + "ping",
-	      value: prefix + "ping"
+	    value: "Repond \"pong!\" correspondingly "
 		},
 		{
 		  name: prefix + "fortune",
-		  value: prefix + "fortune"
+		  value: "Give a fortune!"
 		},
 		{
 		  name: prefix + "lottery",
-		  value: prefix + "lottery"
+		  value: "Powerball lottery simulator"
 		},
 		{
 		  name: prefix + "8ball",
-		  value: prefix + "8ball"
+		  value: "Give more fortunes!"
+    },
+    {
+      name: prefix + "flip",
+      value: "Flip a coin"
+    },
+    {
+      name: prefix + "dice",
+      value: "Roll a 6-face die "
     }]
   }})
 }
@@ -70,7 +78,7 @@ const command = args.shift().toLowerCase();
 	}
 	else{
 	  message.channel.send("Tails!")
-	}
+  }
   }
   if (command == "dice"){
 	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
@@ -82,9 +90,12 @@ const command = args.shift().toLowerCase();
     stopBot()
   }
 });
+/* Terminating bot */
 function stopBot(){
-  () => client.destroy()
+  channel.send("Terminating current bot")
+   .then(() => client.destroy())
 }
+/* Get a fortune */
 function fortuneread(message){
   message.react('🤔')
     index = Math.floor(Math.random() * fortune.fortunes.length)
@@ -96,6 +107,7 @@ function fortuneread(message){
       message.channel.send(selected)
     }
 }
+/* Powerball lottery */
 function lottery(message){
     lot = []
     lotstr = ""
@@ -123,11 +135,13 @@ function lottery(message){
     .setColor('GREEN')
     message.channel.send(embed);
 }
+/* 8ball fortune */
 function eight(message){
   index = Math.floor(Math.random() * eightball.eightball.length)
 	selected = eightball.eightball[index]
 	message.channel.send(selected)
 }
+/* Set prefix */
 function setprefix(message, args) {
   let new_prefix = args[0];
     if (new_prefix != undefined && new_prefix.length < 3){
@@ -139,6 +153,8 @@ function setprefix(message, args) {
       message.channel.send("Invalid Prefix");
     }
   }
+
+/* Reset bot */
 function resetBot(channel) {
   // send channel a message that you're resetting bot [optional]
   channel.send('Resetting...')
