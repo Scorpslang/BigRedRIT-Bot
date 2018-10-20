@@ -10,9 +10,12 @@ const eightball = require ("./8ball.json")
 client.on("ready", () => {
   console.log("I am ready!");
   client.user.setActivity("Type !help");
-  //client.channels.get('503044022781083648').send("And I'm back");
 });
 prefix = config.prefix 
+
+client.on("guildCreate", guild => {
+  console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`)
+});
 
 client.on("message", (message) => {
 if (!message.content.startsWith(prefix) || message.author.bot) return;
