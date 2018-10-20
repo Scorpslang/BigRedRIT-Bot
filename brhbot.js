@@ -40,17 +40,17 @@ const command = args.shift().toLowerCase();
 		{
 		  name: prefix + "8ball",
 		  value: "Give more fortunes!"
-    },
-    {
-      name: prefix + "flip",
-      value: "Flip a coin"
-    },
-    {
-      name: prefix + "dice",
-      value: "Roll a 6-face die "
-    }]
-  }})
-}
+        },
+        {
+          name: prefix + "flip",
+          value: "Flip a coin"
+        },
+        {
+          name: prefix + "dice",
+          value: "Roll a 6-face die "
+        }]
+    }})
+  }
 		
   if (command === "ping") {
     message.channel.send("pong!");
