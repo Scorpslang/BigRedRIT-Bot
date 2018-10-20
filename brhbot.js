@@ -4,6 +4,7 @@ const {Client, RichEmbed} = require("discord.js");
 const client = new Client({autoReconnect:true});
 const config = require("./config.json");
 const fortune = require ("./fortunes.json")
+const eightball = require ("./8ball.json")
 
 client.on("error", (e) => console.error(e));
 client.on("debug", (e) => console.info(e));
@@ -68,9 +69,7 @@ const command = args.shift().toLowerCase();
       }
       lot.push(draw)
     }
-    console.log(lot)
     lot.sort(function(a, b){return a - b});
-    console.log(lot)
     power = Math.floor((Math.random() * 26) + 1)
     if (power < 10){
       power = ("0" + power)
@@ -97,6 +96,11 @@ const command = args.shift().toLowerCase();
     else{
       message.channel.send("Invalid Prefix");
     }
+  }
+  if (command === "8ball"){
+	index = Math.floor(Math.random() * eightball.eightball.length)
+	selected = eightball[index]
+	message.channel.send(selected)
   }
 });
 
