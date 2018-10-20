@@ -226,13 +226,15 @@ function timetill(message, args){
 	    }
 		else {
 		  message.channel.send(Math.abs(args[0] - yearNow) + " year until " + yearNow)
+		}
 	  }
-	  else if {
-		if (Math.abs(args[0] - yearNow > 1){
+	  else {
+		if (Math.abs(args[0] - yearNow) > 1){
 		  message.channel.send(Math.abs(args[0] - yearNow) + " years from " + yearNow)
 		}
 		else {
 		  message.channel.send(Math.abs(args[0] - yearNow) + " year from " + yearNow)
+		}
 	  }
       break;
     case "month":
