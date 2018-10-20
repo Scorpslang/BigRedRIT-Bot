@@ -55,7 +55,7 @@ function help(command, message) {
         },
         {
           name: prefix + "quikmafs",
-          value: "Generate a random math function"
+          value: "Generate a random math function to be solved"
         }]
       }
     })
