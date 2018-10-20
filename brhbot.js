@@ -36,6 +36,9 @@ const command = args.shift().toLowerCase();
 		  name: prefix + "lottery",
 		  value: prefix + "lottery"
 		}
+		{
+		  name: prefix + "8ball",
+		  value: prefix + "8ball"
 	  ]
 	  }
 	})
