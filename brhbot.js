@@ -19,11 +19,11 @@ client.on("message", (message) => {
 if (!message.content.startsWith(prefix) || message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
-help(command);
+help(command,message);
 });
 
 /* help fuction */
-function help(command) {
+function help(command, message) {
   if(command === "help") {
     message.channel.send({
       embed: {
@@ -94,15 +94,11 @@ function help(command) {
   if (command === "stop"){
     stopBot(message.channel)
   }
-<<<<<<< HEAD
   if (command === "break"){
     soup
   }
-});
+};
 
-=======
-}
->>>>>>> d810f868a3ab803d00db740073c4b4f5e79dbe78
 /* Roll a die */
 function rollDice(message) {
 	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
