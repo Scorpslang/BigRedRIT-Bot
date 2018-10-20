@@ -58,8 +58,15 @@ const command = args.shift().toLowerCase();
     .setColor('RED')
     message.channel.send(embed);
   }
-  if (command === "break"){
-    channel.send(randomsauce)
+  if (command === "prefix"){
+    let new_prefix = args[0];
+    if (new_prefix != undefined && new_prefix.length < 3){
+      prefix = new_prefix;
+      message.channel.send("Prefix Changed to " + new_prefix);
+    }
+    else{
+      message.channel.send("Invalid Prefix");
+    }
   }
 });
 
