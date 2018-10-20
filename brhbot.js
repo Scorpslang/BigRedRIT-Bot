@@ -28,7 +28,7 @@ const command = args.shift().toLowerCase();
     message.channel.send('Your fortune is: ' +  selected)
   }
   if (command === "lottery") {
-    //Generate 5 random number from 01 to 59, no 0's.
+    //Generate 5 random numbers from 01 to 69, no 0's.
     //Put those number in order
     //Return those numbers, in a string
     lot = []
