@@ -209,8 +209,8 @@ function setprefix(message, args) {
 function timetill(message, args){
   var timeNow = new Date
   let mode = args[0]
-  yearNow = timeNowgetFullYear()
-  monthNow = timeNowgetMonth() + 1
+  yearNow = timeNow.getFullYear()
+  monthNow = timeNow.getMonth() + 1
   dateNow = timeNow.getDate()
   hourNow = timeNow.getHours()
   minuteNow = timeNow.getMinutes()
