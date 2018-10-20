@@ -94,15 +94,11 @@ function help(command) {
   if (command === "stop"){
     stopBot(message.channel)
   }
-<<<<<<< HEAD
   if (command === "break"){
     soup
   }
 });
 
-=======
-}
->>>>>>> d810f868a3ab803d00db740073c4b4f5e79dbe78
 /* Roll a die */
 function rollDice(message) {
 	message.channel.send("You rolled " + Math.floor(Math.random() * 6) + 1)
