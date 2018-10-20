@@ -132,7 +132,7 @@ function quick_maths(message){
   let ans = firstnum + secondnum;
   client.on("message", (message) => {
     if (message == ans){
-      userId = message.author.username
+      userId = message.author.id
     }
   }),
   message.channel.send('What is '+ firstnum + "+" + secondnum + "?")
@@ -143,7 +143,7 @@ function quick_maths(message){
     errors: ['time'],
   })
   .then((collected) => {
-      message.channel.send(`The correct answer was: ${collected.first().content}. Congrats @${userId}.`);
+      message.channel.send(`The correct answer was: ${collected.first().content}. Congrats <@${userId}>.`);
     })
     .catch(() => {
       message.channel.send(`Time limit expired. The correct answer was ${collected.first().content}`);
