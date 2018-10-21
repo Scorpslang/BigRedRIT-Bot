@@ -56,6 +56,10 @@ function help(command, message, args) {
         {
           name: prefix + "quikmafs",
           value: "Generate a random math function to be solved"
+        },
+        {
+          name: prefix + "timetill",
+          value: "Time until a given date"
         }]
       }
     })
