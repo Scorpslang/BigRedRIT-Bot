@@ -217,37 +217,35 @@ function timetill(message, args){
   secondNow = timeNow.getSeconds()
   switch (mode){
     case "year":
-	  if (args[0] > yearNow){
-		if (Math.abs(args[0] - yearNow) > 1){
-	      message.channel.send(Math.abs(args[0] - yearNow) + " years until " + yearNow)
+	  if (args[1] > yearNow){
+		  if (Math.abs(args[1] - yearNow) > 1){
+	      message.channel.send(Math.abs(args[1] - yearNow) + " years until " + args[1])
 	    }
-		else {
-		  message.channel.send(Math.abs(args[0] - yearNow) + " year until " + yearNow)
-		}
+		  else {
+		    message.channel.send(Math.abs(args[1] - yearNow) + " year until " + args[1])
+		  }
 	  }
 	  else {
-		if (Math.abs(args[0] - yearNow) > 1){
-		  message.channel.send(Math.abs(args[0] - yearNow) + " years from " + yearNow)
-		}
-		else {
-		  message.channel.send(Math.abs(args[0] - yearNow) + " year from " + yearNow)
-		}
+		  if (Math.abs(args[1] - yearNow) < 1){
+		    message.channel.send(Math.abs(args[1] - yearNow) + " years from " + yearNow)
+		  }
+		  else {
+		    message.channel.send(Math.abs(args[1] - yearNow) + " year from " + yearNow)
+	  	}
 	  }
       break;
     case "month":
       break;
-	case "day":
-	  break;
-	case "hour":
-	  break;
-	case "minute":
-	  break;
-	case "second":
-	  break;
-	case "millisecond":
-	  break
+	  case "day":
+	    break;
+	  case "hour":
+	    break;
+	  case "minute":
+	    break;
+	  case "second":
+	    break;
   }
-	}
+}
 
 /* Terminating bot */
 function stopBot(channel){
