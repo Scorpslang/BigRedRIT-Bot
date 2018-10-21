@@ -180,7 +180,7 @@ function lottery(message){
     const embed = new RichEmbed()
     .setTitle("Your Lottery Numbers")
     .setDescription(lotstr + ":red_circle:" + power)
-    .setColor('GREEN')
+    .setColor('RED')
     message.channel.send(embed);
 }
 /* 8ball fortune */
