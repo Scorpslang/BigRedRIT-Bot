@@ -224,7 +224,7 @@ function timetill(message, args){
   minuteNow = timeNow.getMinutes()
   secondNow = timeNow.getSeconds()
   switch (mode){
-    case "year":
+    case "years":
 		  if (year > yearNow){
         message.channel.send(`${Math.abs(year - yearNow)} years until ${year}`)
       } else if (year < yearNow) {
@@ -232,16 +232,18 @@ function timetill(message, args){
       } else if (year = yearNow){
         message.channel.send("Same Year")
       } else { break }
-    case "month":
+    case "months":
     monthsY = (Math.abs(year - yearNow) * 12)
-		  if (year > yearNow){
-        message.channel.send(`${monthsY + Math.abs(yearNow - year)} years until ${year}`)
-      } else if (year < yearNow) {
-        message.channel.send(`${Math.abs(year - yearNow)} years aftrer ${year}`)
-      } else if (year = yearNow){
-        message.channel.send("Same Year")
+    
+
+		  if (year > yearNow && month < monthNow){
+        message.channel.send(`${monthsY - Math.abs(monthNow - month)} months until ${month}/${year}`)
+      } else if (year > yearNow && month > monthNow) {
+        message.channel.send(`${monthsY + Math.abs(monthNow - month)} months until ${month}/${year}`)
+      } else if (year == yearNow && month == monthNow){
+        message.channel.send("Same Month")
       } else { break }
-	  case "day":
+	  case "days":
 	    break;
 	  case "hour":
 	    break;
