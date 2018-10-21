@@ -128,15 +128,15 @@ function fortuneread(message){
 }
 /* Generate a random addition fuction */
 function quick_maths(message){
-  let firstnum = Math.ceil(Math.random() * 100);
-  let secondnum = Math.ceil(Math.random() * 100);
+  let firstnum = Math.ceil(Math.random() * 50);
+  let secondnum = Math.ceil(Math.random() * 50);
   let ans = firstnum + secondnum;
   client.on("message", (message) => {
     if (message == ans){
       userId = message.author.id
     }
   }),
-  message.channel.send('What is '+ firstnum + "+" + secondnum + "?")
+  message.channel.send(`What is ${firstnum} + ${secondnum}?`)
   .then(() => {
     message.channel.awaitMessages(response => response.content === ("" + ans), {
     max: 1,
