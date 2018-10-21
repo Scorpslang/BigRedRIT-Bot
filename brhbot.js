@@ -208,7 +208,11 @@ function setprefix(message, args) {
 /*Time until ... */
 function timetill(message, args){
   var timeNow = new Date
-  let mode = args[0]
+  const mode = args.shift().toLowerCase();
+  var nums = args[0].split("/")
+  let month = nums[0]
+  let date = nums[1]
+  let year = nums[2]
   yearNow = timeNow.getFullYear()
   monthNow = timeNow.getMonth() + 1
   dateNow = timeNow.getDate()
@@ -217,25 +221,22 @@ function timetill(message, args){
   secondNow = timeNow.getSeconds()
   switch (mode){
     case "year":
-	  if (args[1] > yearNow){
-		  if (Math.abs(args[1] - yearNow) > 1){
-	      message.channel.send(Math.abs(args[1] - yearNow) + " years until " + args[1])
-	    }
-		  else {
-		    message.channel.send(Math.abs(args[1] - yearNow) + " year until " + args[1])
-		  }
-	  }
-	  else {
-		  if (Math.abs(args[1] - yearNow) < 1){
-		    message.channel.send(Math.abs(args[1] - yearNow) + " years from " + yearNow)
-		  }
-		  else {
-		    message.channel.send(Math.abs(args[1] - yearNow) + " year from " + yearNow)
-	  	}
-	  }
-      break;
+		  if (year > yearNow){
+        message.channel.send(`${Math.abs(year - yearNow)} years until ${year}`)
+      } else if (year < yearNow) {
+        message.channel.send(`${Math.abs(year - yearNow)} years aftrer ${year}`)
+      } else if (year = yearNow){
+        message.channel.send("Same Year")
+      } else { break }
     case "month":
-      break;
+    monthsY = (Math.abs(year - yearNow) * 12)
+		  if (year > yearNow){
+        message.channel.send(`${monthsY + Math.abs(yearNow - year)} years until ${year}`)
+      } else if (year < yearNow) {
+        message.channel.send(`${Math.abs(year - yearNow)} years aftrer ${year}`)
+      } else if (year = yearNow){
+        message.channel.send("Same Year")
+      } else { break }
 	  case "day":
 	    break;
 	  case "hour":
